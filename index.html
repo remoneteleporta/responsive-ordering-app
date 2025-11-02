@@ -1,0 +1,36 @@
+<html>
+    <head>
+       <title>Responnsive Ordering App</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="index.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    </head>
+<body>
+        <header>
+            <h1>Jimmy's Diner</h1>
+            <span class="subheading">The best burgers and pizzas in town</span>
+        </header>
+    <main>
+        <div id="menu-items"></div>
+        <div id="bill"></div>
+        <div id="order-confirm-msg"></div>
+
+        <section id="payment-overlay-disp">
+         <form id="payment-details">
+            <h4 id="form-heading">Enter card details</h4>
+            <label for="customer-name">Name</label>
+            <input class="card-details" required type="text" id="customer-name" placeholder="Enter your name">
+            <label for="card-number">Card Number</label>
+            <input class="card-details" required type="tel" id="card-number" name="card-number" pattern="[0-9]*" maxlength="16" autocomplete="off" placeholder="Enter card number">
+            <label for="cvv">CVV</label>
+            <input class="card-details" required type="password" id="cvv" name="cvv" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="Enter CVV">
+            <button type="submit" id="pay-btn">Pay</button>
+         </form>
+        </section>
+    </main>
+	<script type="module" src="index.js"></script>
+</body>
+</html>
+
