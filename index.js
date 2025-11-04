@@ -4,6 +4,7 @@ const menuEl = document.getElementById("menu-items")
 const billEl = document.getElementById("bill")
 const payBtn = document.getElementById("pay-btn")
 const paymentOvrlay = document.getElementById("payment-overlay")
+const billHead = document.getElementById("bill-heading")
 
 function displayMenu(menuArray)
 {
@@ -30,14 +31,45 @@ displayMenu(menuArray)
 
 let order = []
 
-function displayBill(selectedItem){
-   console.log(selectedItem)
+function orderSelect(selectedItem){
+   if(order.includes(selectedItem))
+    {
+        selectedItem.price += selectedItem.price
+     
+    }
+   else
+    {
+    order.push(selectedItem)
+    } 
+
+ displayBill(order)
+}
+
+function displayBill(order){
+
+    billEl.innerHTML = ``
+
+    if(order.length === 0) {
+    billEl.innerHTML = "<p>No items in your order.</p>";
+    return;
+  }
+
+     billEl.innerHTML = order.filter(item => item && item.name).map(function(orders){
+
+
+
+     return `<div class="billed-item">
+    <div class="billed-item-name">${orders.name}</div>
+    <button class="remove-item-btn" id="remove-item-btn">Remove</button>
+    </div>
+    <div class="billed-item-name">$${orders.price}</div>`
+}).join("")
 }
 
 document.addEventListener('click', function(e){
-    displayBill(menuArray[e.target.dataset.additem])
+    billHead.style.display = "block"
+    orderSelect(menuArray[e.target.dataset.additem])
 })
-
 
 payBtn.addEventListener("click", function(){
 const customerName = document.getElementById("customer-name").textContent
