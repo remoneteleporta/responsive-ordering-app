@@ -4,7 +4,7 @@ body {
     }
 
 /* Top Banner */
-header, h1, h2{
+header, h1, h2, .billed-item-name{
     margin:0;
     font-weight: 100;
 }
@@ -29,7 +29,95 @@ h1{
 }
 
 h2{
+    font-size: 1.75em;
+}
+
+h3, .billed-item-price{
     font-size: 1.5em;
+}
+
+.select-menu, .item, .billed-item, #bill-item-remove{
+display: flex;
+}
+
+/* Menu */
+
+#menu-items, #bill-list{
+    margin: 0 2em;
+}
+
+.select-menu{
+    border-bottom: 2px solid rgba(210, 210, 210, 0.3);
+    justify-content: space-between;
+    padding: 1em 0;
+}
+
+.item, .select-menu{
+    align-items: center;
+}
+
+.item{
+    flex-direction: row;
+}
+
+.item-emoji{
+   font-size: 60px;
+}
+
+.item-name, .ingredients,.price{
+    margin: 0;
+    line-height: 1.25em;
+    letter-spacing: 0.05em;
+}
+
+.ingredients, .remove-item-btn{
+    color: #8B8B8B;
+    font-size: 13px;
+}
+
+.price{
+    font-size: 22px;
+}
+
+#add-item-btn{
+    font-size: 18px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    background-color: white;
+}
+
+#add-item-btn:active, .remove-item-btn:active{
+    box-shadow: 0 0 2px black;
+}
+
+
+/* Bill */
+
+#bill-list{
+    display: none;
+    text-align: center;
+}
+
+#bill{
+    border-bottom: 2px solid black;
+}
+
+.billed-item{
+    justify-content: space-between;
+    padding-bottom: 18px;
+}
+
+#bill-item-remove{
+   gap: 10px;
+}
+
+.billed-item-price{
+  color: green;
+}
+
+.remove-item-btn{
+    border: none;
+    background: none;
 }
 
 /*Checkout Payment*/
@@ -88,61 +176,6 @@ button[type="submit"]
 }
 
 #payment-overlay-disp{
-    display: none;
-}
-
-/* Menu */
-
-#menu-items{
-    margin: 0 1.75em;
-}
-
-.select-menu{
-    display: flex;
-    border-bottom: 2px solid rgba(210, 210, 210, 0.3);
-    justify-content: space-between;
-    padding: 1em 0;
-}
-
-.item, .select-menu{
-    align-items: center;
-}
-
-.item{
-    display: flex;
-    flex-direction: row;
-}
-
-.item-emoji{
-   font-size: 60px;
-}
-
-.item-name, .ingredients,.price{
-    margin: 0;
-    line-height: 1.25em;
-    letter-spacing: 0.05em;
-}
-
-.ingredients{
-    color: 8B8B8B;
-    font-size: 13px;
-}
-
-.price{
-    font-size: 22px;
-}
-
-.add-item-btn{
-    font-size: 18px;
-    border-radius: 50%;
-    border: 1px solid grey;
-    background-color: white;
-}
-
-
-/* Bill */
-
-#bill-heading{
     display: none;
 }
 

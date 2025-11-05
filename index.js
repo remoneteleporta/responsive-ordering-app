@@ -4,7 +4,7 @@ const menuEl = document.getElementById("menu-items")
 const billEl = document.getElementById("bill")
 const payBtn = document.getElementById("pay-btn")
 const paymentOvrlay = document.getElementById("payment-overlay")
-const billHead = document.getElementById("bill-heading")
+const billList = document.getElementById("bill-list")
 
 function displayMenu(menuArray)
 {
@@ -21,7 +21,7 @@ function displayMenu(menuArray)
                   <p class="price">$${price}</p>
                   </div>
                   </div>
-                 <button class="add-item-btn" data-additem="${id}">+</button></div>`
+                 <button id="add-item-btn" data-additem="${id}">+</button></div>`
     }).join("")
 
         menuEl.innerHTML = menuItem
@@ -46,7 +46,6 @@ function orderSelect(selectedItem){
 }
 
 function displayBill(order){
-
     billEl.innerHTML = ``
 
     if(order.length === 0) {
@@ -59,16 +58,18 @@ function displayBill(order){
 
 
      return `<div class="billed-item">
-    <div class="billed-item-name">${orders.name}</div>
+    <div id="bill-item-remove">
+    <h3 class="billed-item-name">${orders.name}</h3>
     <button class="remove-item-btn" id="remove-item-btn">Remove</button>
     </div>
-    <div class="billed-item-name">$${orders.price}</div>`
+    <div class="billed-item-price">$${orders.price}</div></div>`
 }).join("")
 }
 
 document.addEventListener('click', function(e){
-    billHead.style.display = "block"
-    orderSelect(menuArray[e.target.dataset.additem])
+    if(e.target.id === "add-item-btn"){
+    billList.style.display = "block"
+    orderSelect(menuArray[e.target.dataset.additem])}
 })
 
 payBtn.addEventListener("click", function(){
