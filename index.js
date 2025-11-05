@@ -7,7 +7,6 @@ const paymentOvrlay = document.getElementById("payment-overlay")
 const billList = document.getElementById("bill-list")
 const totalBill = document.getElementById("total")
 const completeBtn = document.getElementById("complete-order-btn")
-let thanksMsg = document.getElementById("order-confirm")
 
 function displayMenu(menuArray)
 {
@@ -54,10 +53,9 @@ function displayBill(order){
     totalBill.innerHTML = ``
 
     if(order.length === 0) {
-    order = []
     billEl.innerHTML = "<p>No items in your order.</p>";
     completeBtn.style.display = "none"
-    thanksMsg.style.display="none"
+    document.getElementById("order-confirm").style.display="none"
     return;
   }
   else{completeBtn.style.display = "block"}
@@ -106,5 +104,5 @@ const payForm = document.getElementById('payment-form')
 payForm.addEventListener('submit', function(e){
     e.preventDefault()
 })
-thanksMsg.innerHTML = `<p id="order-confirm-msg">Thanks, ${customerName}! Your order is on its way!</p>`
+document.getElementById("order-confirm").innerHTML = `<p id="order-confirm-msg">Thanks, ${customerName}! Your order is on its way!</p>`
 })
