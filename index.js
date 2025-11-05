@@ -54,6 +54,7 @@ function displayBill(order){
     totalBill.innerHTML = ``
 
     if(order.length === 0) {
+    order = []
     billEl.innerHTML = "<p>No items in your order.</p>";
     completeBtn.style.display = "none"
     thanksMsg.style.display="none"
