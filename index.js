@@ -5,6 +5,8 @@ const billEl = document.getElementById("bill")
 const payBtn = document.getElementById("pay-btn")
 const paymentOvrlay = document.getElementById("payment-overlay")
 const billList = document.getElementById("bill-list")
+const totalBill = document.getElementById("total")
+const completeBtn = document.getElementById("complete-order-btn")
 
 function displayMenu(menuArray)
 {
@@ -32,6 +34,7 @@ displayMenu(menuArray)
 let order = []
 
 function orderSelect(selectedItem){
+billList.style.display = "block"
    if(order.includes(selectedItem))
     {
         selectedItem.price += selectedItem.price
@@ -47,33 +50,58 @@ function orderSelect(selectedItem){
 
 function displayBill(order){
     billEl.innerHTML = ``
+    totalBill.innerHTML = ``
 
     if(order.length === 0) {
     billEl.innerHTML = "<p>No items in your order.</p>";
+    completeBtn.style.display = "none"
     return;
   }
+  else{completeBtn.style.display = "block"}
 
      billEl.innerHTML = order.filter(item => item && item.name).map(function(orders){
-
-
 
      return `<div class="billed-item">
     <div id="bill-item-remove">
     <h3 class="billed-item-name">${orders.name}</h3>
-    <button class="remove-item-btn" id="remove-item-btn">Remove</button>
+    <button id="remove-item-btn" data-rmvitem="${orders.id}">Remove</button>
     </div>
     <div class="billed-item-price">$${orders.price}</div></div>`
 }).join("")
+
+const totalAmount = order.reduce((total, currentItem) => {
+  return total + currentItem.price;
+}, 0)
+
+  totalBill.innerHTML = `<div>Total</div>
+  <div class="total-amount">$${totalAmount}</div>`
+}
+
+function removeOrder(removeItem){
+   order.pop(removeItem)
+   displayBill(order)
 }
 
 document.addEventListener('click', function(e){
     if(e.target.id === "add-item-btn"){
-    billList.style.display = "block"
     orderSelect(menuArray[e.target.dataset.additem])}
+    else
+    if(e.target.id === "remove-item-btn"){
+        removeOrder(order[e.target.dataset.rmvitem])
+    }
+})
+
+completeBtn.addEventListener("click", function(){
+    paymentOvrlay.style.display = "block"
 })
 
 payBtn.addEventListener("click", function(){
-const customerName = document.getElementById("customer-name").textContent
+const customerName = document.getElementById("customer-name").value
+billList.style.display = "none"
 paymentOvrlay.style.display = "none"
-document.getElementById("order-confirm-msg").innerHTML = `Thanks, ${customerName}! Your order is on its way!`
+const payForm = document.getElementById('payment-form')
+payForm.addEventListener('submit', function(e){
+    e.preventDefault()
+})
+document.getElementById("order-confirm").innerHTML = `<p id="order-confirm-msg">Thanks, ${customerName}! Your order is on its way!</p>`
 })
