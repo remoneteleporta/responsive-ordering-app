@@ -8,6 +8,8 @@ const billList = document.getElementById("bill-list")
 const totalBill = document.getElementById("total")
 const completeBtn = document.getElementById("complete-order-btn")
 
+/* Menu Display */
+
 function displayMenu(menuArray)
 {
     const menuItem = menuArray.map(function(menu){
@@ -31,6 +33,8 @@ function displayMenu(menuArray)
 }
 displayMenu(menuArray)
 
+/* Order Storage */
+
 let order = []
 
 function orderSelect(selectedItem){
@@ -47,6 +51,8 @@ billList.style.display = "block"
 
  displayBill(order)
 }
+
+/* Render Bill */
 
 function displayBill(order){
     billEl.innerHTML = ``
@@ -77,8 +83,11 @@ const totalAmount = order.reduce((total, currentItem) => {
   <div class="total-amount">$${totalAmount}</div>`
 }
 
-function removeOrder(removeItem){
-   order.pop(removeItem)
+/* Remove */
+
+function removeOrder(removeItemId){
+   const removeItemIndex = order.findIndex(item => item.id == removeItemId);
+   order.splice(removeItemIndex, 1);
    displayBill(order)
 }
 
@@ -87,13 +96,17 @@ document.addEventListener('click', function(e){
     orderSelect(menuArray[e.target.dataset.additem])}
     else
     if(e.target.id === "remove-item-btn"){
-        removeOrder(order[e.target.dataset.rmvitem])
+        removeOrder(e.target.dataset.rmvitem)
     }
 })
+
+/* Checkout */
 
 completeBtn.addEventListener("click", function(){
     paymentOvrlay.style.display = "block"
 })
+
+/* Thank You Msg */
 
 payBtn.addEventListener("click", function(){
 
@@ -109,5 +122,4 @@ payForm.addEventListener('submit', function(e){
 })
 document.getElementById("thanks-msg").style.display = "block"
 document.getElementById("order-confirm").innerHTML = `<p id="order-confirm-msg">Thanks, ${customerName}! Your order is on its way!</p>`
-
 })
