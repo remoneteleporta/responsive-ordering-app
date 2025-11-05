@@ -23,7 +23,7 @@ function displayMenu(menuArray)
                   <p class="price">$${price}</p>
                   </div>
                   </div>
-                 <button id="add-item-btn" data-additem="${id}">+</button></div>`
+                 <button class="add-item-btn" id="add-item-btn" data-additem="${id}">+</button></div>`
     }).join("")
 
         menuEl.innerHTML = menuItem
@@ -55,7 +55,6 @@ function displayBill(order){
     if(order.length === 0) {
     billEl.innerHTML = "<p>No items in your order.</p>";
     completeBtn.style.display = "none"
-    document.getElementById("order-confirm").style.display="none"
     return;
   }
   else{completeBtn.style.display = "block"}
@@ -97,12 +96,18 @@ completeBtn.addEventListener("click", function(){
 })
 
 payBtn.addEventListener("click", function(){
+
 const customerName = document.getElementById("customer-name").value
+
 billList.style.display = "none"
 paymentOvrlay.style.display = "none"
+document.querySelectorAll(".add-item-btn").forEach(addBtn => addBtn.disabled = true)
+
 const payForm = document.getElementById('payment-form')
 payForm.addEventListener('submit', function(e){
     e.preventDefault()
 })
+document.getElementById("thanks-msg").style.display = "block"
 document.getElementById("order-confirm").innerHTML = `<p id="order-confirm-msg">Thanks, ${customerName}! Your order is on its way!</p>`
+
 })

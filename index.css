@@ -182,8 +182,12 @@ button[type="submit"]
 
 /* Order confirmation */
 
-#order-confirm-msg{
+#thanks-msg{
+    display: none;
     text-align: center;
+}
+
+#order-confirm-msg{
     margin: 30px 50px;
     color: #065F46;
     background-color: #ECFDF5;
