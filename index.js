@@ -73,7 +73,7 @@ const totalAmount = order.reduce((total, currentItem) => {
   return total + currentItem.price;
 }, 0)
 
-  totalBill.innerHTML = `<div>Total</div>
+  totalBill.innerHTML = `<div>Total price:</div>
   <div class="total-amount">$${totalAmount}</div>`
 }
 
