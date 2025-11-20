@@ -21,10 +21,12 @@
         <div id="total"><!-- total --></div>
         <button type="submit" id="complete-order-btn">Complete Order</button>
         </section>
+
         <section id="thanks-msg">
         <div id="order-confirm"><!-- order confirm --></div>
         <button type="submit" onclick="location.reload()">New Order</button>
         </section>
+
         <section id="payment-overlay">
          <form id="payment-form">
             <h4 id="form-heading">Enter card details</h4>
@@ -35,8 +37,10 @@
             <label for="cvv">CVV</label>
             <input class="card-details" required type="password" id="cvv" name="cvv" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="Enter CVV">
             <button type="submit" id="pay-btn">Pay</button>
+            <button id="form-close-btn">X</button>
          </form>
         </section>
+
     </main>
 	<script type="module" src="index.js"></script>
 </body>

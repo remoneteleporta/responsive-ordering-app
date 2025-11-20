@@ -163,6 +163,14 @@ left: 0;
     margin-bottom: 14px;
 }
 
+#form-close-btn{
+    position: absolute;
+    top: 10;
+    right: 7;
+    background-color: white;
+    border: none;
+}
+
 button[type="submit"]
 {
     background-color: #16DB99;

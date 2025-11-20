@@ -123,3 +123,4 @@ payForm.addEventListener('submit', function(e){
 document.getElementById("thanks-msg").style.display = "block"
 document.getElementById("order-confirm").innerHTML = `<p id="order-confirm-msg">Thanks, ${customerName}! Your order is on its way!</p>`
 })
+document.getElementById("form-close-btn").addEventListener("click", ()=> paymentOvrlay.style.display = "none")
