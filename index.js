@@ -110,7 +110,7 @@ completeBtn.addEventListener("click", function(){
 
 payBtn.addEventListener("click", function(){
 
-const customerName = DOMPurify.sanitize(document.getElementById("customer-name").value)
+const customerName = document.getElementById("customer-name").value
 
 billList.style.display = "none"
 paymentOvrlay.style.display = "none"
